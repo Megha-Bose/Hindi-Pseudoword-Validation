@@ -1,0 +1,33 @@
+bitmaps
+  instructions
+  word
+  not_word
+  familiar
+  not_familiar
+  selection_item
+  soot
+  paidh
+
+
+table my_table
+  "word"  soot
+  "pseudo_word"  paidh
+
+task rate_word
+  show bitmap @2 0 -100
+  rate option pos 0 200
+  rate option labels not_word word
+  rate option items selection_item
+  rate 10000 5
+  save @1 RATE RATE_RT RATE_STATUS
+  rate option pos 0 200
+  rate option labels not_familiar familiar
+  rate option items selection_item
+  rate 10000 5
+  save @1 RATE RATE_RT RATE_STATUS
+
+block test
+  message instructions mouse
+  tasklist
+    rate_word 2 fixed
+  end
