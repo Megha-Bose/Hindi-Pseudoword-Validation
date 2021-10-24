@@ -1,0 +1,116 @@
+scale: Hi
+- 1
+- 2
+- 3
+- 4
+- 5
+
+scale: En
+- 1
+- 2
+- 3
+- 4
+- 5
+
+scale: Int
+- 1
+- 2
+- 3
+- 4
+- 5
+
+l: Section_Details
+t: info
+q: Hello! <br>
+This is the first task of the experiment. We ask you some basic details and gauge your Hindi proficiency.
+
+l: Email
+t: textline
+o: require
+q: What is your E-mail Address:
+- 
+
+l: Age
+t: range
+q: What is your age?
+- {min=16,max=90}
+
+l: Vis
+t: radio
+o: require
+q: Do you have a visual impairment?
+- No, I can see normally without any help/tool etc.
+- I can only not see objects far away.
+- I can only not see objects close to me.
+- I cannot see objects at either of the distances.
+- I am partially blind.
+
+l: 
+t: jump
+- if $Vis != 1 then goto Status
+
+l: VisFix
+t: radio
+o: require
+q: If you have an impairment, do you have a way to finish the experiment without exhaustion or other issues?
+- Yes
+- No
+
+l: Status
+t: radio
+o: require
+q: Do you confirm that you have a calm environment, won't be disturbed in the middle, and are feeling well enough to attempt this experiment fully?
+- Yes
+- No
+
+l: 
+t: jump
+- if $Status != 1 then goto Thank
+
+l: Hindi
+t: scale Hi
+o: require
+b: Please fill in all the scales to go proceed
+q: Using the buttons on the right, rate <b>your proficiency in Hindi</b> in the areas listed on the left.<br>
+leftmost number (1) means low and the rightmost (5) means high. Except the last question, in which you can indicate how much of your daily talks/chats is Hindi used in (from 1-5)<br>
+<i>For example, for the question "writing", if you feel not proficient, your answer should be close to 1, if you feel confident about writing in Hindi, your answer should be close to 5</i>
+- Speaking (Hindi, yourself)
+- Understanding (someone else in Hindi)
+- Reading (a text in Hindi)
+- Writing (something in Hindi)
+- Amount of Interaction you use Hindi for
+
+l: English
+t: scale En
+o: require
+b: Please fill in all the scales to go proceed
+q: Using the buttons on the right, rate <b>your proficiency in English</b> in the areas listed on the left.<br>
+leftmost number (1) means low and the rightmost (5) means high. Except the last question, in which you can indicate how much of your daily talks/chats is English used in (from 1-5)<br>
+<i>For example, for the question "writing", if you feel not proficient, your answer should be close to 1, if you feel confident about writing in English, your answer should be close to 5</i>
+- Speaking (English, yourself)
+- Understanding (someone else in English)
+- Reading (a text in English)
+- Writing (something in English)
+- Amount of Interaction you use English for
+
+l: Interaction
+t: scale Int
+o: require
+b: Please fill in all the scales to go proceed to the experiment
+q: Using the buttons on the right, rate <b>amount of interaction</b> among various kinds of people listed on the left.<br>
+leftmost number (1) means low and the rightmost (5) means high.<br>
+<i>For example, for the question "Friends", if you feel that you don't interact a lot with them, your answer should be close to 1, if you feel that you interact with them all the time, your answer should be close to 5</i>
+- Family
+- Friends
+- Classmates
+- Teachers
+- Co-workers
+
+l: pseudex
+t: experiment
+- pseudovalidation_exp
+
+l: Thank
+t: textline
+q: Thanks and leave any feedback if you want to! (optional)
+- 
