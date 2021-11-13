@@ -1,30 +1,45 @@
+options
+  set &ref 4
+  set &scale 65
+
 bitmaps
+  soot
+  paidh  
   instructions
   word
   not_word
   familiar
   not_familiar
-  selection_item
-  soot
-  paidh
-
+  wordiness_selection_item
+  familiarity_selection_item
+  red_selection_item
 
 table my_table
-  "word"  soot
-  "pseudo_word"  paidh
+  "soot" 1
+  "paidh" 2
 
 task rate_word
   show bitmap @2 0 -100
   rate option pos 0 200
   rate option labels not_word word
-  rate option items selection_item
-  rate 10000 5
+  rate option items wordiness_selection_item
+  rate 10000 7
+  set $shift expression RATE-&ref
+  set $pos expression &scale*$shift
+  show bitmap red_selection_item $pos 200
   save @1 RATE RATE_RT RATE_STATUS
+  delay 100
+  clear -1
   rate option pos 0 200
   rate option labels not_familiar familiar
-  rate option items selection_item
-  rate 10000 5
+  rate option items familiarity_selection_item
+  rate 10000 7
   save @1 RATE RATE_RT RATE_STATUS
+  set $shift expression RATE-&ref
+  set $pos expression &scale*$shift
+  show bitmap red_selection_item $pos 200
+  delay 100
+  clear -1
 
 block test
   message instructions mouse
