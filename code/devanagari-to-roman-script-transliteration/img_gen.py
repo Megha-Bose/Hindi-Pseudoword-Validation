@@ -13,6 +13,20 @@ def img_gen_roman(inputf, outputf):
     trlines = [trline.rstrip() for trline in trlines]
 
   for i in range(len(lines)):
+    j = 0
+    while j < len(lines[i]):
+      if lines[i][j] == 'ि':
+        new_line = ""
+        if j > 0:
+          new_line = new_line + lines[i][:j-1]
+        new_line = new_line + lines[i][j]
+        if j > 0:
+          new_line = new_line + lines[i][j-1]   
+        if j + 1 < len(lines[i]):
+          new_line = new_line + lines[i][j+1:]
+        lines[i] = new_line
+      j+=1
+    
     call('''convert -background yellow -fill black -font Lohit-Devanagari -size 300x100 -gravity center 'caption:'"{}" "{}".png'''.format(lines[i], trlines[i]), shell=True)
     call("mv *.png {}".format(outputf), shell=True)
 
