@@ -27,7 +27,7 @@ scale: ent
 l: Section_Details
 t: info
 q: Hello! <br>
-This is the first task where we ask you some basic details and gauge your Hindi proficiency.
+This is the first task of the experiment. We ask you some basic details and gauge your Hindi proficiency.
 
 l: Email
 t: textline
