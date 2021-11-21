@@ -12,7 +12,12 @@ scale: En
 - 4
 - 5
 
-scale: Int
+scale: lang
+- Hindi
+- English
+- either
+
+scale: ent
 - 1
 - 2
 - 3
@@ -22,7 +27,7 @@ scale: Int
 l: Section_Details
 t: info
 q: Hello! <br>
-This is the first task of the experiment. We ask you some basic details and gauge your Hindi proficiency.
+This is the first task where we ask you some basic details and gauge your Hindi proficiency.
 
 l: Email
 t: textline
@@ -30,10 +35,10 @@ o: require
 q: What is your E-mail Address:
 - 
 
-l: Age
-t: range
-q: What is your age?
-- {min=16,max=90}
+l: age
+t: textline
+q: What is your age? (in numbers)
+- 
 
 l: Vis
 t: radio
@@ -75,10 +80,9 @@ q: Using the buttons on the right, rate <b>your proficiency in Hindi</b> in the 
 leftmost number (1) means low and the rightmost (5) means high. Except the last question, in which you can indicate how much of your daily talks/chats is Hindi used in (from 1-5)<br>
 <i>For example, for the question "writing", if you feel not proficient, your answer should be close to 1, if you feel confident about writing in Hindi, your answer should be close to 5</i>
 - Speaking (Hindi, yourself)
-- Understanding (someone else in Hindi)
+- Listening (someone else in Hindi)
 - Reading (a text in Hindi)
 - Writing (something in Hindi)
-- Amount of Interaction you use Hindi for
 
 l: English
 t: scale En
@@ -88,23 +92,30 @@ q: Using the buttons on the right, rate <b>your proficiency in English</b> in th
 leftmost number (1) means low and the rightmost (5) means high. Except the last question, in which you can indicate how much of your daily talks/chats is English used in (from 1-5)<br>
 <i>For example, for the question "writing", if you feel not proficient, your answer should be close to 1, if you feel confident about writing in English, your answer should be close to 5</i>
 - Speaking (English, yourself)
-- Understanding (someone else in English)
+- Listening (someone else in English)
 - Reading (a text in English)
 - Writing (something in English)
-- Amount of Interaction you use English for
 
-l: Interaction
-t: scale Int
+l: lchoice
+t: scale lang
 o: require
-b: Please fill in all the scales to go proceed to the experiment
-q: Using the buttons on the right, rate <b>amount of interaction</b> among various kinds of people listed on the left.<br>
-leftmost number (1) means low and the rightmost (5) means high.<br>
-<i>For example, for the question "Friends", if you feel that you don't interact a lot with them, your answer should be close to 1, if you feel that you interact with them all the time, your answer should be close to 5</i>
-- Family
-- Friends
-- Classmates
-- Teachers
-- Co-workers
+q: Please mark the language that you use more in each of the activity mentioned:
+- To recite the days of a week
+- To name the months in a year
+- To count up to hundred
+- To name common fruits / vegetables
+- To help someone write an informal message
+- To help someone write a formal mail
+- To understand conversations
+- To read popular and academic texts
+- To argue with someone when angry
+- To watch a movie/series
+- To talk with parents/grandparents
+- To talk with siblings/friends
+
+l: Transition
+t: info
+q: We are now moving on to the second task, the main experiment. Instructions follow:
 
 l: pseudex
 t: experiment
