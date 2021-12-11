@@ -1,0 +1,27 @@
+bitmaps
+  instructions
+  left
+  right
+  selection_item
+  dog
+  cat
+  fish
+
+table my_table
+  "cute cat"  cat
+  "cute dog"  dog
+  "scary fish" fish
+
+task rate_animal
+  show bitmap @2 0 -100
+  rate option pos 0 200
+  rate option labels left right
+  rate option items selection_item
+  rate 10000 5
+  save @1 RATE RATE_RT RATE_STATUS
+
+block test
+  message instructions mouse
+  tasklist
+    rate_animal 3 fixed
+  end

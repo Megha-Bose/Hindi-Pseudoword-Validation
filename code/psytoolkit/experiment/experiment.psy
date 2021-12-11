@@ -1,0 +1,164 @@
+options
+  set &ref 4
+  set &scale 65
+
+bitmaps
+  chikanapks
+  bhikshuon
+  vaivahik
+  karenge
+  nimnastriy
+  dharmaprant
+  sarvotkrisht
+  pichharta
+  golagappe
+  mngakar
+  urta
+  ratri
+  dabi
+  pnja
+  ghusi
+  pray
+  ausat
+  tooti
+  jamin
+  katakar
+  aavedanakarta
+  maurng
+  kooddan
+  nistej
+  lngri
+  doraha
+  yatnaen
+  pathkon
+  moorti
+  mahasngram
+  bari
+  baston
+  majhin
+  barso
+  vrishti
+  chhutte
+  oophan
+  tahal
+  saph
+  tope
+  upiyat 
+  asnmvanngh
+  jarjnnd
+  khalatvki
+  thera
+  lulphnn 
+  barijaz 
+  shinnshit 
+  dakdoon 
+  tyoglnn
+  ooksar 
+  taldi 
+  liyat 
+  eemi 
+  talhi 
+  shabinn 
+  khin 
+  khudarn 
+  phaj 
+  naji  
+  instructions
+  word
+  not_word
+  familiar
+  not_familiar
+  wordiness_selection_item
+  familiarity_selection_item
+  red_selection_item
+
+table my_table
+  "chikanapks" 1
+  "bhikshuon" 2
+  "vaivahik" 3
+  "karenge" 4
+  "nimnastriy" 5
+  "dharmaprant" 6
+  "sarvotkrisht" 7
+  "pichharta" 8
+  "golagappe" 9
+  "mngakar" 10
+  "urta" 11 
+  "ratri" 12 
+  "dabi" 13 
+  "pnja" 14 
+  "ghusi"15 
+  "pray" 16 
+  "ausat" 17 
+  "tooti" 18 
+  "jamin" 19 
+  "katakar" 20
+  "aavedanakarta" 21 
+  "maurng" 22 
+  "kooddan" 23 
+  "nistej" 24 
+  "lngri" 25 
+  "doraha" 26 
+  "yatnaen" 27 
+  "pathkon" 28 
+  "moorti" 29 
+  "mahasngram" 30
+  "bari" 31 
+  "baston" 32 
+  "majhin" 33 
+  "barso" 34 
+  "vrishti" 35 
+  "chhutte" 36 
+  "oophan" 37 
+  "tahal" 38 
+  "saph" 39 
+  "tope" 40
+  "upiyat" 41 
+  "asnmvanngh" 42 
+  "jarjnnd" 43 
+  "khalatvki" 44 
+  "thera" 45 
+  "lulphnn" 46 
+  "barijaz" 47 
+  "shinnshit" 48 
+  "dakdoon" 49 
+  "tyoglnn" 50
+  "ooksar" 51 
+  "taldi" 52 
+  "liyat" 53 
+  "eemi" 54 
+  "talhi" 55 
+  "shabinn" 56 
+  "khin" 57 
+  "khudarn" 58 
+  "phaj" 59 
+  "naji" 60
+
+task rate_word
+  show bitmap @2 0 -100
+  rate option pos 0 200
+  rate option labels not_word word
+  rate option items wordiness_selection_item
+  rate 10000 7
+  set $shift expression RATE-&ref
+  set $pos expression &scale*$shift
+  show bitmap red_selection_item $pos 200
+  save @1 RATE RATE_RT RATE_STATUS
+  delay 100
+  clear -1
+  rate option pos 0 200
+  rate option labels not_familiar familiar
+  rate option items familiarity_selection_item
+  rate 10000 7
+  save @1 RATE RATE_RT RATE_STATUS
+  set $shift expression RATE-&ref
+  set $pos expression &scale*$shift
+  show bitmap red_selection_item $pos 200
+  delay 200
+  clear -1
+
+block test
+  message instructions mouse
+  tasklist
+    rate_word 60 fixed
+  end

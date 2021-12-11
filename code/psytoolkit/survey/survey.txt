@@ -1,0 +1,133 @@
+scale: Hi
+- 1
+- 2
+- 3
+- 4
+- 5
+
+scale: En
+- 1
+- 2
+- 3
+- 4
+- 5
+
+scale: lang
+- Hindi
+- English
+- either
+
+scale: ent
+- 1
+- 2
+- 3
+- 4
+- 5
+
+l: Section_Details
+t: info
+q: Hello! <br>
+This is the first task of the experiment. We ask you some basic details and gauge your Hindi proficiency.
+
+l: Email
+t: textline
+o: require
+q: What is your E-mail Address:
+- 
+
+l: age
+t: textline
+q: What is your age? (in numbers)
+- 
+
+l: Vis
+t: radio
+o: require
+q: Do you have a visual impairment?
+- No, I can see normally without any help/tool etc.
+- I can only not see objects far away.
+- I can only not see objects close to me.
+- I cannot see objects at either of the distances.
+- I am partially blind.
+
+l: 
+t: jump
+- if $Vis != 1 then goto Status
+
+l: VisFix
+t: radio
+o: require
+q: If you have an impairment, do you have a way to finish the experiment without exhaustion or other issues?
+- Yes
+- No
+
+l: Status
+t: radio
+o: require
+q: Do you confirm that you have a calm environment, won't be disturbed in the middle, and are feeling well enough to attempt this experiment fully?
+- Yes
+- No
+
+l: 
+t: jump
+- if $Status != 1 then goto Thank
+
+l: Hindi
+t: scale Hi
+o: require
+b: Please fill in all the scales to go proceed
+q: Using the buttons on the right, rate <b>your proficiency in Hindi</b> in the areas listed on the left.<br>
+leftmost number (1) means low and the rightmost (5) means high. Except the last question, in which you can indicate how much of your daily talks/chats is Hindi used in (from 1-5)<br>
+<i>For example, for the question "writing", if you feel not proficient, your answer should be close to 1, if you feel confident about writing in Hindi, your answer should be close to 5</i>
+- Speaking (Hindi, yourself)
+- Listening (someone else in Hindi)
+- Reading (a text in Hindi)
+- Writing (something in Hindi)
+
+l: English
+t: scale En
+o: require
+b: Please fill in all the scales to go proceed
+q: Using the buttons on the right, rate <b>your proficiency in English</b> in the areas listed on the left.<br>
+leftmost number (1) means low and the rightmost (5) means high. Except the last question, in which you can indicate how much of your daily talks/chats is English used in (from 1-5)<br>
+<i>For example, for the question "writing", if you feel not proficient, your answer should be close to 1, if you feel confident about writing in English, your answer should be close to 5</i>
+- Speaking (English, yourself)
+- Listening (someone else in English)
+- Reading (a text in English)
+- Writing (something in English)
+
+l: lchoice
+t: scale lang
+o: require
+q: Please mark the language that you use <b>more</b> in each of the activity mentioned:
+- To recite the days of a week
+- To name the months in a year
+- To count up to thirty
+- To name common fruits / vegetables
+- To help someone write an informal message
+- To help someone write a formal mail
+- To understand conversations
+- To read popular and academic texts
+- To argue with someone when angry
+- To watch a movie/series
+- To talk with parents/grandparents
+- To talk with siblings/friends
+
+l: Transition
+t: info
+q: We are now moving on to the second task, the main experiment.<br>
+The experiment is <b>timed</b> and in case you are not able to respond <b>before timeout</b>, we receive a default response.<br>
+Please make sure that you are in a suitable mood and environment to attempt this experiment for the next <b>20-25 mins</b>. Instructions follow: <br> <br>
+The task is to rate Devanagari sequences on: how word like they are & how familiar you are with them. <br>
+You can rate by selecting 1 of the 7 circles on the scale for each rating. <br>
+The slides for each string, their familiarity, and word-like-ness have a timeout. Thus, please <b>don’t overthink</b> and fill whatever you feel first!<br>
+Finally, have fun and we thank you for your honest responses and time spent!
+
+l: pseudex
+t: experiment
+- pseudovalidation_exp
+
+l: Thank
+t: textline
+q: Thanks and leave any feedback if you want to! (optional)
+- 

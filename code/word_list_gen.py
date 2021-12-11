@@ -42,32 +42,32 @@ freq_thresh = get_freq_threshold()
 print('Length Threshold: ',len_thresh)
 print('Frequency Threshold: ',freq_thresh)
 
-df = pd.read_csv(inp_file)
+# df = pd.read_csv(inp_file)
 
-num = 10
+# num = 10
 
-# hf
-hf_word_df = df.loc[df['frequency'] >= freq_thresh]
+# # hf
+# hf_word_df = df.loc[df['frequency'] >= freq_thresh]
 
-# hflong
-hflong_word_df = hf_word_df.loc[hf_word_df['total_length'] >= len_thresh]
-hflong_word_list = hflong_word_df['word']
-write_samples(hflong_word_list, out_hflong_word_file, num)
+# # hflong
+# hflong_word_df = hf_word_df.loc[hf_word_df['total_length'] >= len_thresh]
+# hflong_word_list = hflong_word_df['word']
+# write_samples(hflong_word_list, out_hflong_word_file, num)
 
-# hfshort
-hfshort_word_df = hf_word_df.loc[hf_word_df['total_length'] < len_thresh]
-hfshort_word_list = hfshort_word_df['word']
-write_samples(hfshort_word_list, out_hfshort_word_file, num)
+# # hfshort
+# hfshort_word_df = hf_word_df.loc[hf_word_df['total_length'] < len_thresh]
+# hfshort_word_list = hfshort_word_df['word']
+# write_samples(hfshort_word_list, out_hfshort_word_file, num)
 
-# lf
-lf_word_df = df.loc[df['frequency'] < freq_thresh]
+# # lf
+# lf_word_df = df.loc[df['frequency'] < freq_thresh]
 
-# lflong
-lflong_word_df = lf_word_df.loc[lf_word_df['total_length'] >= len_thresh]
-lflong_word_list = lflong_word_df['word']
-write_samples(lflong_word_list, out_lflong_word_file, num)
+# # lflong
+# lflong_word_df = lf_word_df.loc[lf_word_df['total_length'] >= len_thresh]
+# lflong_word_list = lflong_word_df['word']
+# write_samples(lflong_word_list, out_lflong_word_file, num)
 
-# lfshort
-lfshort_word_df = lf_word_df.loc[lf_word_df['total_length'] < len_thresh]
-lfshort_word_list = lfshort_word_df['word']
-write_samples(lfshort_word_list, out_lfshort_word_file, num)
+# # lfshort
+# lfshort_word_df = lf_word_df.loc[lf_word_df['total_length'] < len_thresh]
+# lfshort_word_list = lfshort_word_df['word']
+# write_samples(lfshort_word_list, out_lfshort_word_file, num)
